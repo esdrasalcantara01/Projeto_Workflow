@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div  class="topodash">
+        <h1>Workflow Dashboard</h1>
+        <p>sistema de gestao geral</p>
+   </div>
+    
+   <div id="cadastro-cliente" class="card-cliente">
+        <h2> Cadastrar Novo Cliente </h2>
+        <form>
+            <p>
+                <label>Nome Completo:</label><br>
+                <input type="text" placeholder="Ex: thiago ventura">
+            </p>
+            <p>
+                <label>E-mail do Cliente:</label><br>
+                <input type="email" placeholder="Ex: anakin@email.com" required>
+            </p>
+            <p>
+                <label>Telefone:</label><br>
+                <input type="tel" placeholder="Ex: (81) 9422-8922" required>
+            </p>
+            <button type="submit">Salvar Cliente</button>
+        </form>
+    </div>
+    
+    <div id="cadastro-produto" class="card-produto">
+        <h2>Cadastrar Novo Produto</h2>
+        <form>
+            <p>
+                <label>Nome do Produto:</label><br>
+                <input type="text" placeholder="Ex: pizza" required>
+            </p>
+            <p>
+                <label>Preço R$:</label><br>
+                <input type="number" placeholder="Ex: 70.00" step="0.01"required>
+            </p>
+            <p>
+                <label>Quantidade em Estoque:</label><br>
+                <input type="number" placeholder="Ex: 100" required>
+            </p>
+            <button type="submit">Salvar Produto</button>
+        </form>
+    </div>
+    
+    <div id="adicionar-pedido" class="card-pedido">
+        <h2> Cadastrar Novo Pedido </h2>
+        <form>
+            <p>
+                <label>Nome do client:</label><br>
+                <input type="text" placeholder="Ex: thiago ventura" required>
+            </p>
+            <p>
+                <label>produto:</label><br>
+                <input type="text" placeholder="Ex: pizza" required>
+            </p>
+            <p>
+                <label>preço unitario:</label><br>
+                <input type="number" placeholder="Ex: 70.00" step="0.01" required>
+            </p>  
+
+            <p>
+                <label>data do pedido:</label><br>
+                <input type="date" required>
+            </p>
+
+            <p>
+                <label>quantidade:</label><br>
+                <input type="number" placeholder="Ex: 2" required>
+            </p>
+
+            <p>
+                <label>valor total:</label><br>
+                <input type="number" placeholder="Ex: 190.00" step="0.01" required>
+            </p>
+            <button type="submit">Salvar Pedido</button>
+        </form>
+    </div>
+    
+{% endblock %}

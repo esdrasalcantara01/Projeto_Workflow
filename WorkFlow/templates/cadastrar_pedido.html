@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div id="adicionar-pedido" class="card-pedido">
+        <h2> Cadastrar Novo Pedido </h2>
+        <form>
+            <p>
+                <label>Nome do client:</label><br>
+                <input type="text" placeholder="Ex: thiago ventura" required>
+            </p>
+            <p>
+                <label>produto:</label><br>
+                <input type="text" placeholder="Ex: pizza" required>
+            </p>
+            <p>
+                <label>preço unitario:</label><br>
+                <input type="number" placeholder="Ex: 70.00" step="0.01" required>
+            </p>  
+
+            <p>
+                <label>data do pedido:</label><br>
+                <input type="date" required>
+            </p>
+
+            <p>
+                <label>quantidade:</label><br>
+                <input type="number" placeholder="Ex: 2" required>
+            </p>
+
+            <p>
+                <label>valor total:</label><br>
+                <input type="number" placeholder="Ex: 190.00" step="0.01" required>
+            </p>
+            <button type="submit">Salvar Pedido</button>
+        </form>
+    </div>
+    
+{% endblock %}

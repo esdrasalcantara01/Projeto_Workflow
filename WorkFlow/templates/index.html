@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="geral">
+
+        <div class="login-card">
+            <h2>Workflow-Login</h2>
+
+            <form id="login-form">
+                <div class=" input-box">
+                    <span class="icone"> <i class="fa-solid fa-user"></i> </span>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                </div>
+
+
+                <div class=" input-box ">
+                    <span class="icone"> <i class="fa-solid fa-lock"></i> </span>
+                    <input type="password" name="password" placeholder="senha" required>
+                </div>
+                  
+                  <label class="lembrar-opcoes">
+                  <input type="checkbox" id="rememberUser">
+                  <span>Lembrar usuário e senha</span>
+                  </label>
+
+                <div class="opcoes">
+                    <a href="#" class="link"> esqueceu senha?</a>
+                    <a href="#" class="link">nao tenho conta</a>
+                </div>
+
+                     <button type="submit" class="bnt"> entrar</button> 
+
+            </form>
+
+        </div>
+     </div>
+{% endblock }
