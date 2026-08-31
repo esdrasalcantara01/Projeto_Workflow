@@ -44,6 +44,24 @@ body{
 }
 
 
+.clientes {
+     display: flex;
+     flex-direction: row;
+     padding: 5px;
+     flex-wrap: wrap;
+}
+
+
+.cliente {
+ border: 2px solid black;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ margin: 5px;
+ padding: 5px;
+}
+
 
 h2{
     text-align: center;

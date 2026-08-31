@@ -7,17 +7,26 @@
         <p>sistema de gestao geral</p>
            
             <h2>Clientes</h2>
-            {% for clientes in lista_Clientes['clientes'] %}
-            
-            <p>{{ clientes.nome }}</p>
-            
-            {% else %}
-            <h3>nenhum cliente cadastrado no momento...</h3>
-            {% endfor %}
 
+            <div class="clientes">
+                
+                {% for clientes in lista_Clientes['clientes'] %}
+                
+                <div class="cliente">
+                 <img 
+                    src="{{ url_for('static', filename='images/' ~ clientes.foto_perfil) }}" 
+                    width="100px" height="100px" 
+                    style="border-radius: 50px;">
+                  
+                  <p>{{ clientes.nome }}</p>
+                </div>
+                {% else %}
+                <h3>nenhum cliente cadastrado no momento...</h3>
+                {% endfor %}
 
-        <img src="{{ url_for('static', filename='images/' ~ escolha_aleatória) }}" width="200px" height="200px">
-       <hr>
+            </div>
+            
+            <hr>
    </div>
 
 {% endblock %}

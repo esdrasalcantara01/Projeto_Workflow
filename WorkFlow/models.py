@@ -13,6 +13,7 @@ class Cliente(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100))
+    foto_perfil = db.Column(db.String(100))
     
 
 class Produto(db.Model):

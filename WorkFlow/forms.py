@@ -2,7 +2,10 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, FileField, SubmitField, PasswordField, IntegerField, FloatField
 from wtforms.validators import DataRequired, Email, ValidationError
 from flask_login import current_user
-
+import random
+import os
+from WorkFlow import app
+from flask import session
 
 from WorkFlow import db, bcrypt
 
@@ -77,9 +80,11 @@ class Cliente_Cadastro(FlaskForm):
     registrar = SubmitField('registrar ')
 
     def registrar_cliente(self):
-
+        foto_salvar = session.pop('escolha_aleatória', None)
+                  
         cliente = Cliente(
-            nome = self.nome.data
+            nome = self.nome.data,
+            foto_perfil = foto_salvar
         )
 
 

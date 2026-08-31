@@ -1,7 +1,7 @@
 import os 
 import random
 from WorkFlow import app
-from flask import render_template, url_for, redirect
+from flask import render_template, url_for, redirect, session
 from WorkFlow.models import Usuario, Produto, Cliente
 from WorkFlow.forms import UserCadastro, ProdutoDados, LoginCadastro, Pedido_Cadastro, Cliente_Cadastro
 from flask_login import login_user, logout_user, current_user
@@ -15,15 +15,10 @@ def pagina_piloto():
 
     lista_Clientes = {'clientes': cliente.all()}
 
-    pasta_imagens = os.path.join(app.root_path, 'static', 'images')
-
-    listar_imagens = os.listdir(pasta_imagens)
-    escolha_aleatória = random.choice(listar_imagens)
-
+    
     return render_template('dashboard.html', 
                            lista_Clientes = lista_Clientes, 
-                           usuario = usuario,
-                           escolha_aleatória= escolha_aleatória )
+                           usuario = usuario )
 
 
 @app.route('/cadastrar_pedido', methods = ['GET', 'POST'])
@@ -45,11 +40,20 @@ def cadastrar_produto():
 
 @app.route('/cadastrar_cliente', methods = ['GET', 'POST'])
 def cadastrar_cliente():
-
     form = Cliente_Cadastro()
+
+    if not form.is_submitted():
+      pasta_imagens = os.path.join(app.root_path, 'static', 'images')
+      listar_imagens = os.listdir(pasta_imagens)
+      session['escolha_aleatória'] = random.choice(listar_imagens)
+       
     if form.validate_on_submit():
+
+        form.registrar_cliente()
         return redirect(url_for('pagina_piloto'))
     else:
         print("erro inesperado: ", form.errors)
         
-    return render_template('cadastrar_cliente.html', form= form)
+    return render_template('cadastrar_cliente.html', 
+                           form= form, 
+                           escolha_aleatória= session.get('escolha_aleatória'))
