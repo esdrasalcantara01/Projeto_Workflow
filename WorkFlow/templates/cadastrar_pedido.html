@@ -5,14 +5,17 @@
 
     <div id="adicionar-pedido" class="card-pedido">
         <h2> Cadastrar Novo Pedido </h2>
-        <form>
+        <form method="post">
+             {{ form.csrf_token }}
+             {{ form.hidden_tag() }}
+       
             <p>
-                <label>Nome do client:</label><br>
-                <input type="text" placeholder="Ex: thiago ventura" required>
+                <label>Nome do cliente:</label><br>
+                {{ form.nome_cliente(placeholder="nome do cliente") }}
             </p>
             <p>
                 <label>produto:</label><br>
-                <input type="text" placeholder="Ex: pizza" required>
+                {{ form.nome_produto(placeholder="produto") }}
             </p>
             <p>
                 <label>preço unitario:</label><br>

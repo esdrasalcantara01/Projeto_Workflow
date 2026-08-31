@@ -13,20 +13,7 @@ class Cliente(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100))
-    pedidos = db.relationship('Pedido', backref= 'cliente')
-
-
-
-class Pedido(db.Model):
-    __tablename__ = 'pedido'
-
-    id = db.Column(db.Integer, primary_key=True)
-    cliente_id = db.Column(db.ForeignKey('cliente.id'), index=True)
-    data_pedido = db.Column(db.DateTime)
-    status = db.Column(db.String(30))
-    valor_total = db.Column(db.Numeric(10, 2))
-
-
+    
 
 class Produto(db.Model):
     __tablename__ = 'produto'
@@ -38,21 +25,32 @@ class Produto(db.Model):
 
 
 
-t_relatorio = db.Table(
-    'relatorio',
-    db.Column('id_cliente', db.ForeignKey('cliente.id'), index=True),
+class Pedido(db.Model):
+    __tablename__ = 'pedido'
+
+    id = db.Column(db.Integer, primary_key=True)
+    cliente_id = db.Column(db.ForeignKey('cliente.id'), index=True)
+    produto_id = db.Column(db.ForeignKey('produto.id'), index=True)
+    quantidade = db.Column(db.Integer)
+    data_pedido = db.Column(db.DateTime)
+    valor_total = db.Column(db.Numeric(10, 2))
+
+
+
+
+itens_pedidos = db.Table(
+    'itens_pedidos',
     db.Column('pedido_id', db.ForeignKey('pedido.id'), index=True),
     db.Column('produto_id', db.ForeignKey('produto.id'), index=True),
     db.Column('quantidade', db.Integer)
 )
 
 
-
-class Usuario(db.Model):
+class Usuario(UserMixin, db.Model):
     __tablename__ = 'usuario'
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255))
     email = db.Column(db.String(255))
     senha = db.Column(db.String(255))
-    codigo_recuperacao = db.Column(db.String(10))
+    

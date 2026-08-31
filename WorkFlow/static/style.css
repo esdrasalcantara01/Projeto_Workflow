@@ -1,11 +1,11 @@
 
 body{
-    margin: 8;
-    padding: 8;
-    background: linear-gradient(135deg, #4facfe, #00f2fe); 
-
-   
+    margin: 2px;
+    padding: 2px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);    
 }
+
+
 .geral{
     height: 100vh;
     display: flex;
@@ -13,6 +13,8 @@ body{
     align-items: center;
     
 }
+
+
 .login-card{  
     height: 300px;
     background: linear-gradient(135deg, #4facfe, #0c1213); 
@@ -23,6 +25,24 @@ body{
     align-items: center;
     
 }
+
+
+.Dashboard {
+ align-self: flex-start;
+ width: 600px;
+ height: 600px;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+}
+
+
+.Lista_clientes {
+    border: 2px solid black;
+    width: 100%;
+    
+}
+
 
 
 h2{
@@ -95,10 +115,20 @@ input-box input::placeholder{
 }
 
 
-.card-cliente{
+.views {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 80%;
+}
+
+
+.card-cliente {
+    align-self: flex-start;
     display: flex;
     background: linear-gradient(135deg, #4facfe, #0c1213);
-    width: 200px;
+    width: 500px;
+    height: 500px;
     border-radius: 20px;
     flex-direction: column;
     justify-content: center;
@@ -107,10 +137,12 @@ input-box input::placeholder{
 }
 
 
-.card-produto{
+.card-produto {
+    align-self: flex-start;
     display: flex;
     background: linear-gradient(135deg, #4facfe, #0c1213);
-    width: 200px;
+    width: 500px;
+    height: 500px;
     border-radius: 20px;
     flex-direction: column;
     justify-content: center;
@@ -120,9 +152,11 @@ input-box input::placeholder{
 
 
 .card-pedido{
+    align-self: flex-start;
     display: flex;
     background: linear-gradient(135deg, #4facfe, #0c1213);
-    width: 200px;
+    width: 500px;
+    height: 500px;
     border-radius: 20px;
     flex-direction: column;
     justify-content: center;
@@ -130,3 +164,65 @@ input-box input::placeholder{
     padding: 10px;
 }
 
+nav a { 
+        margin-right: 15px; 
+        text-decoration: none; 
+        color: black; 
+}
+        
+        /* Classe que destaca a página atual */
+.active { 
+        font-weight: bold; 
+        color: blue;
+}
+
+
+.navegação nav {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid blue;
+        height: 780px;
+        width: 100%;
+        margin: 5px;
+        padding: 2px;
+        position: static;
+}
+
+
+.navegação a {
+        width: 100%;
+        height: 5%;
+        border: 2px solid blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        margin: 2px;
+        padding: auto;
+        border-radius: 5px;
+}
+
+
+.navegação a:hover {
+        background-color: rgb(177, 177, 226);
+}
+
+
+.active {
+        background-color: rgb(177, 177, 226);
+}
+
+
+section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+}
+
+footer {
+    text-align: center;
+    background-color: rgb(177, 177, 226);
+    height: 90px;
+    padding: 5px;
+}

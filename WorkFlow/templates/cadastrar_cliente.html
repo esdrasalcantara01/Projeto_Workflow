@@ -4,20 +4,16 @@
 
    <div id="cadastro-cliente" class="card-cliente">
         <h2> Cadastrar Novo Cliente </h2>
-        <form>
+        <form method="post" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+
             <p>
                 <label>Nome Completo:</label><br>
-                <input type="text" placeholder="Ex: thiago ventura">
+                {{ form.nome(placeholder="nome") }}
+
             </p>
-            <p>
-                <label>E-mail do Cliente:</label><br>
-                <input type="email" placeholder="Ex: anakin@email.com" required>
-            </p>
-            <p>
-                <label>Telefone:</label><br>
-                <input type="tel" placeholder="Ex: (81) 9422-8922" required>
-            </p>
-            <button type="submit">Salvar Cliente</button>
+            {{ form.registrar }}
         </form>
     </div>
     

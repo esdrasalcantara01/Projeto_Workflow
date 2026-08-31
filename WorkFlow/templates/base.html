@@ -6,30 +6,40 @@
     <title>workflow</title>
     <link rel="stylesheet" href="{{ url_for ('static' ,filename = 'style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- <style>
-        /* Estilo simples para o menu */
-        nav a { margin-right: 15px; text-decoration: none; color: black; }
-        /* Classe que destaca a página atual */
-        .active { font-weight: bold; color: blue; border-bottom: 2px solid blue; }
-    </style>
+
 </head>
 <body>
 
-   <nav>
-    <a href="{{ url_for('pagina_piloto') }}" 
-    class="{{ 'active' if request.endpoint == 'pagina_piloto' }}">Início</a>
+<section>
     
-    <a href="{{ url_for('cadastrar_cliente') }}" 
-    class="{{ 'active' if request.endpoint == 'cadastrar_cliente' }}">Cadastrar Cliente</a>
+    <div class="navegação">
+    
+           <nav>
+            <a href="{{ url_for('pagina_piloto') }}"
+            class="{{ 'active' if request.endpoint == 'pagina_piloto' }}">Início</a>
+    
+            <a href="{{ url_for('cadastrar_cliente') }}"
+            class="{{ 'active' if request.endpoint == 'cadastrar_cliente' }}">Cadastrar Cliente</a>
+    
+            <a href="{{ url_for('cadastrar_produto') }}"
+            class="{{ 'active' if request.endpoint == 'cadastrar_produto' }}">Cadastrar Produto</a>
+    
+            <a href="{{ url_for('cadastrar_pedido') }}"
+            class="{{ 'active' if request.endpoint == 'cadastrar_pedido' }}">Cadastrar Pedido</a>
+    
+           </nav>
+    </div>
+      <div class="views">
+    
+            {% block content %}
+            {% endblock %}
+      </div>
+    
+</section>
+<footer>
+    <h3>WorkFlow para pequenas empresas, e grandes negócios</h3>
+    <p>o fim é apenas o começo</p>
+</footer>
 
-    <a href="{{ url_for('cadastrar_produto') }}"
-    class="{{ 'active' if request.endpoint == 'cadastrar_produto' }}">Cadastrar Produto</a>
-
-    <a href="{{ url_for('cadastrar_pedido') }}"
-    class="{{ 'active' if request.endpoint == 'cadastrar_pedido' }}">Cadastrar Pedido</a>
-
-   </nav>
-    {% block content %}
-
-    {% endblock %}
 </body>
+</html>

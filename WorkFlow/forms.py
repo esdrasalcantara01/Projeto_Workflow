@@ -72,19 +72,46 @@ class ProdutoDados(FlaskForm):
         return produto
 
 
-class Cliente_Status(FlaskForm):
+class Cliente_Cadastro(FlaskForm):
     nome = StringField('nome: ', validators=[DataRequired()])
-    pedido = StringField('pedido: ', validators=[DataRequired()])
-    registrar = SubmitField('registrar: ')
+    registrar = SubmitField('registrar ')
 
-
-    def registrar_pedido(self):
+    def registrar_cliente(self):
 
         cliente = Cliente(
-            nome = self.nome.data,
-            pedido = self.pedido.data
+            nome = self.nome.data
         )
+
 
         db.session.add(cliente)
         db.session.commit()
         return cliente
+
+
+class Pedido_Cadastro(FlaskForm):
+    nome_cliente = StringField('nome', validators=[DataRequired()])
+    nome_produto = StringField('produto', validators=[DataRequired()])
+    quantidade = IntegerField('quantidade', validators=[DataRequired()])
+    registrar = SubmitField('registrar')
+
+    def salvar_pedido(self, cliente):
+
+        produto = Produto.query.filter_by(
+        nome=self.nome_produto.data
+         ).first()
+
+        if not produto:
+          raise ValidationError('Produto não encontrado.')
+
+        valor_total = produto.preco * self.quantidade.data
+
+        pedido = Pedido(
+          cliente_id = cliente.id,
+          produto_id = produto.id,
+          quantidade = self.quantidade.data,
+          valor_total= valor_total
+      )
+
+        db.session.add(pedido)
+        db.session.commit()
+        return pedido
