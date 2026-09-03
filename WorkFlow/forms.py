@@ -4,10 +4,9 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from flask_login import current_user
 import random
 import os
-from WorkFlow import app
 from flask import session
 
-from WorkFlow import db, bcrypt
+from WorkFlow import db, bcrypt, app
 
 from WorkFlow.models import Pedido, Cliente, Produto, Usuario
 
